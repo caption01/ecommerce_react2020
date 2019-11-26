@@ -12,4 +12,4 @@ export const addItemToCart = (cartItem, cartItemToAdd) => {
     }
 
     return [...cartItem, {...cartItemToAdd, quantity: 1}]
-} 
+}  
