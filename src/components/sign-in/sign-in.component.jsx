@@ -5,6 +5,7 @@ import FormInput from '../form-input/form-input.component'
 import CustomButtom from '../custom-button/custom-button.component'
 
 import { signInWithGoogle } from '../../firebase/firebase.utils'
+import { auth } from '../../firebase/firebase.utils';
 
 class SignIn extends React.Component {
 
@@ -17,10 +18,19 @@ class SignIn extends React.Component {
         }
     }   
 
-    handleSubmit = e => {
+    handleSubmit =async e => {
         e.preventDefault();
 
-        this.setState({ email: '', password: ''})
+        const { email, password } = this.state;
+        try{
+            await auth.signInWithEmailAndPassword(email, password);
+            this.setState({ email: '', password: ''})
+        }
+        catch(err){
+            console.log('errrrr');
+        }
+
+        
     }
 
     handleChange = e => {
@@ -35,7 +45,7 @@ class SignIn extends React.Component {
                 <h2>I already have an Account</h2>
                 <span>Sign in with your email and password</span>
                 
-                <form onClick={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <FormInput
                         handleChange={this.handleChange}
                         name='email' 
