@@ -27,10 +27,8 @@ class SignIn extends React.Component {
             this.setState({ email: '', password: ''})
         }
         catch(err){
-            console.log('errrrr');
+            console.log('cant sign in with email and password');
         }
-
-        
     }
 
     handleChange = e => {
