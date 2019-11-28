@@ -17,6 +17,7 @@ import { selectCurrentUser } from './redux/user/user.selector'
 
 import { createStructuredSelector } from 'reselect'
 
+
 class App extends React.Component {
 
   unsubscribeFromAuth = null;
@@ -38,6 +39,11 @@ class App extends React.Component {
       } else {
         setCurrentUser(userAuth)
       }
+
+      // User this when wants to add Data To firestore
+      // addCollectionAndDocuments(
+      //     'collections', 
+      //     collectionsArray.map(({title, items}) =>({title, items})))
 
     })
   }
